@@ -36,6 +36,18 @@ Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap C
 
 To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
 
+## Preview in GitHub Codespaces (no local install required)
+
+1. On the repo page in GitHub, click **Code → Codespaces → Create codespace on `main`**.
+2. Wait for the container to build — `npm install` runs automatically.
+3. In the Codespace terminal, run:
+   ```bash
+   npm run dev
+   ```
+4. Codespaces detects port 4321 and pops up a **"Open in Browser"** notification — click it to view the live preview at a temporary HTTPS URL.
+
+Edits to Markdown content or `.astro` files hot-reload instantly.
+
 ## Local development
 
 Requirements: Node 20+ (see `.nvmrc`).
