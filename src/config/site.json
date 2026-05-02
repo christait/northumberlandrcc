@@ -5,9 +5,8 @@
   "contactEmail": "recorder@northumberlandrcc.org.uk",
   "nav": [
     { "label": "Home", "href": "/" },
-    { "label": "About", "href": "/about/" },
     { "label": "History", "href": "/history/" },
-    { "label": "Officers", "href": "/officers/" },
+    { "label": "Executive", "href": "/officers/" },
     { "label": "Conclaves", "href": "/conclaves/" },
     { "label": "Events", "href": "/events/" },
     { "label": "News", "href": "/news/" },
