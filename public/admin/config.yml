@@ -102,6 +102,20 @@ collections:
       - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
       - { name: body, label: Notes / biography, widget: markdown, required: false }
 
+  - name: officers
+    label: Divisional Officers
+    label_singular: Officer
+    folder: src/content/officers
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: office, label: Office, widget: string }
+      - { name: name, label: Name, widget: string, required: false }
+      - { name: rank, label: Rank, widget: string, required: false }
+      - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
+
   - name: pages
     label: Static pages
     label_singular: Page
