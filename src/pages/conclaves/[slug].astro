@@ -22,7 +22,14 @@ const c = entry.data;
         {c.meetingPlace && <li><strong>Meeting place:</strong> {c.meetingPlace}</li>}
         {c.meetingDates && <li><strong>Meeting dates:</strong> {c.meetingDates}</li>}
         {c.consecrated && <li><strong>Consecrated:</strong> {c.consecrated}</li>}
-        {c.recorder && <li><strong>Recorder:</strong> {c.recorder}{c.recorderEmail ? <> — <a href={`mailto:${c.recorderEmail}`}>{c.recorderEmail}</a></> : ''}</li>}
+        {(c.recorder || c.recorderEmail) && (
+          <li>
+            <strong>Recorder:</strong>{' '}
+            {c.recorder}
+            {c.recorder && c.recorderEmail ? ' — ' : ''}
+            {c.recorderEmail && <a href={`mailto:${c.recorderEmail}`}>{c.recorderEmail}</a>}
+          </li>
+        )}
       </ul>
       <hr />
       <Content />
