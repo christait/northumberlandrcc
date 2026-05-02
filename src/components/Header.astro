@@ -9,7 +9,15 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="brand" aria-label={`${siteConfig.title} home`}>
-      <span class="brand-mark" aria-hidden="true">☩</span>
+      <img
+        class="brand-logo"
+        src="/img/logo.png"
+        alt={`${siteConfig.title} crest`}
+        width="56"
+        height="56"
+        loading="eager"
+        decoding="async"
+      />
       <span class="brand-text">
         <span class="brand-title">{siteConfig.title}</span>
         <span class="brand-sub">{siteConfig.tagline}</span>
@@ -71,16 +79,10 @@ const isActive = (href: string) =>
     color: inherit;
   }
 
-  .brand-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: var(--colour-primary);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 1.25rem;
+  .brand-logo {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
     flex-shrink: 0;
   }
 
