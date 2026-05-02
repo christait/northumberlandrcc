@@ -1,1 +1,122 @@
-# Northumberland Division
+# Northumberland Division — Order of the Red Cross of Constantine
+
+Static website for the Northumberland Division, built with [Astro](https://astro.build/), authored in Markdown, edited via [Decap CMS](https://decapcms.org/), and deployed to GitHub Pages.
+
+## How content gets onto the site
+
+There are two ways to publish:
+
+### 1. Drop a Markdown file into GitHub
+
+Add a `.md` file to one of the content folders below and merge to `main`. GitHub Actions will rebuild and redeploy automatically.
+
+| Section   | Folder                  | Required frontmatter |
+| --------- | ----------------------- | -------------------- |
+| News      | `src/content/news/`     | `title`, `date`      |
+| Events    | `src/content/events/`   | `title`, `date`      |
+| Conclaves | `src/content/conclaves/`| `name`               |
+| Officers  | `src/content/officers/` | `name`, `rank`, `role` |
+| Pages     | `src/content/pages/`    | `title`              |
+
+A minimal news article looks like:
+
+```markdown
+---
+title: A new notice
+date: 2026-05-10
+summary: One-sentence teaser shown on listing pages.
+---
+
+Body in **Markdown**.
+```
+
+### 2. Use the friendly editor at `/admin/`
+
+Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
+
+To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
+
+## Local development
+
+Requirements: Node 20+ (see `.nvmrc`).
+
+```bash
+npm install
+npm run dev      # local dev server at http://localhost:4321
+npm run build    # production build to ./dist
+npm run preview  # preview the production build
+```
+
+To work on Decap CMS locally without GitHub sign-in:
+
+```bash
+npx decap-server   # starts the local proxy on :8081
+```
+
+…and temporarily set `local_backend: true` in `public/admin/config.yml`.
+
+## Deployment
+
+`/.github/workflows/deploy.yml` builds the site on every push to `main` and publishes it via the official `actions/deploy-pages` flow.
+
+### One-time GitHub Pages setup
+
+1. Repo **Settings → Pages → Build and deployment → Source**: choose **GitHub Actions**.
+2. If using the custom domain `northumberlandrcc.org.uk`, the `public/CNAME` file in this repo will set it automatically. Confirm DNS:
+   - `A` records pointing apex to GitHub Pages IPs (185.199.108.153, .109.153, .110.153, .111.153), or
+   - `CNAME` for `www` pointing to `<owner>.github.io`.
+3. Tick **Enforce HTTPS** once the certificate is issued.
+
+## OAuth setup for Decap (one-time)
+
+Decap CMS uses a tiny OAuth proxy to broker GitHub sign-in for editors. The simplest options:
+
+- **Cloudflare Workers** — deploy [`decap-proxy`](https://github.com/sterlingwes/decap-proxy) (zero-cost on the free tier).
+- **Vercel** — deploy [`netlify-cms-oauth-provider-node`](https://github.com/vencax/netlify-cms-github-oauth-provider).
+
+Then in **GitHub → Settings → Developer settings → OAuth Apps** create an app:
+
+- Homepage URL: `https://northumberlandrcc.org.uk`
+- Authorization callback URL: `https://<your-proxy-host>/callback`
+
+Set the resulting client ID/secret as environment variables in your proxy, then update `public/admin/config.yml`:
+
+```yaml
+backend:
+  name: github
+  repo: christait/northumberlandrcc
+  branch: main
+  base_url: https://<your-proxy-host>
+  auth_endpoint: auth
+```
+
+## Project layout
+
+```
+.
+├── astro.config.mjs
+├── public/
+│   ├── admin/             # Decap CMS (form editor)
+│   ├── CNAME              # custom domain
+│   ├── favicon.svg
+│   └── robots.txt
+├── src/
+│   ├── components/        # Header, Footer
+│   ├── config/site.json   # site title, nav, contact email
+│   ├── content/           # Markdown content collections
+│   ├── layouts/           # BaseLayout, MarkdownPageLayout
+│   ├── pages/             # routes
+│   └── styles/global.css
+└── .github/workflows/     # build + deploy pipelines
+```
+
+## Editing the site
+
+- **Change the title, tagline or nav links:** `src/config/site.json`.
+- **Change a static page (About, History, Downloads):** edit the matching file in `src/content/pages/`.
+- **Add a Conclave / Officer / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Tweak colours / typography:** `src/styles/global.css`.
+
+## Licence
+
+Content © Northumberland Division of the Red Cross of Constantine. Source code MIT-licensed.

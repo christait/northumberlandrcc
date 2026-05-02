@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const news = (await getCollection('news', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title="News" description="News and notices from the Northumberland Division.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Latest</span>
+      <h1>News &amp; notices</h1>
+      <p class="muted">Subscribe via the <a href="/rss.xml">RSS feed</a>.</p>
+
+      <div class="grid cols-2" style="margin-top:2rem;">
+        {news.map((n) => (
+          <article class="card">
+            <p class="muted small">{fmtDate(n.data.date)}</p>
+            <h3><a href={`/news/${n.slug}/`}>{n.data.title}</a></h3>
+            {n.data.summary && <p class="muted">{n.data.summary}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>.small{font-size:0.85rem;}</style>

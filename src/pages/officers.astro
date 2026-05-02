@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const officers = (await getCollection('officers')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+
+const rendered = await Promise.all(
+  officers.map(async (o) => ({ entry: o, ...(await render(o)) }))
+);
+---
+
+<BaseLayout title="Officers" description="The officers of the Northumberland Division of the Red Cross of Constantine.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Divisional team</span>
+      <h1>Officers of the Division</h1>
+      <p class="muted">The principal officers serving the Northumberland Division.</p>
+
+      <div class="grid cols-2" style="margin-top:2rem;">
+        {rendered.map(({ entry, Content }) => (
+          <article class="card">
+            <p class="eyebrow" style="margin-bottom:0.4rem;">{entry.data.role}</p>
+            <h3 style="margin-bottom:0.25rem;">{entry.data.name}</h3>
+            <p class="muted small" style="margin-bottom:0.75rem;">{entry.data.rank}</p>
+            <Content />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .small { font-size: 0.85rem; }
+</style>
