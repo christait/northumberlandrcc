@@ -1,8 +1,8 @@
 ---
-name: To Be Announced
-rank: E. Knight
+name: Paul McKay
+rank: Ill. Kt.
 role: Divisional Recorder
-order: 2
+order: 4
 ---
 
 Responsible for Divisional correspondence, records and returns.
