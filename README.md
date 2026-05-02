@@ -36,6 +36,30 @@ Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap C
 
 To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
 
+## Images
+
+Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.png`.
+
+To pull (or refresh) images from the existing WordPress site, run:
+
+```bash
+npm run fetch:images
+```
+
+This downloads everything listed in `scripts/fetch-images.mjs` to `public/img/`. After running it, commit the new files. The script must be run somewhere with open internet (e.g. a Codespace or your laptop).
+
+## Preview in GitHub Codespaces (no local install required)
+
+1. On the repo page in GitHub, click **Code → Codespaces → Create codespace on `main`**.
+2. Wait for the container to build — `npm install` runs automatically.
+3. In the Codespace terminal, run:
+   ```bash
+   npm run dev
+   ```
+4. Codespaces detects port 4321 and pops up a **"Open in Browser"** notification — click it to view the live preview at a temporary HTTPS URL.
+
+Edits to Markdown content or `.astro` files hot-reload instantly.
+
 ## Local development
 
 Requirements: Node 20+ (see `.nvmrc`).
