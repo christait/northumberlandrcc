@@ -15,7 +15,7 @@ Add a `.md` file to one of the content folders below and merge to `main`. GitHub
 | News      | `src/content/news/`     | `title`, `date`      |
 | Events    | `src/content/events/`   | `title`, `date`      |
 | Conclaves | `src/content/conclaves/`| `name`               |
-| Officers  | `src/content/officers/` | `name`, `rank`, `role` |
+| Executive | `src/content/executive/`| `name`, `rank`, `role` |
 | Pages     | `src/content/pages/`    | `title`              |
 
 A minimal news article looks like:
@@ -32,13 +32,13 @@ Body in **Markdown**.
 
 ### 2. Use the friendly editor at `/admin/`
 
-Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
+Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
 
 To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
 
 ## Images
 
-Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.png`.
+Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.svg`.
 
 To pull (or refresh) images from the existing WordPress site, run:
 
@@ -137,8 +137,8 @@ backend:
 ## Editing the site
 
 - **Change the title, tagline or nav links:** `src/config/site.json`.
-- **Change a static page (About, History, Downloads):** edit the matching file in `src/content/pages/`.
-- **Add a Conclave / Officer / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Change a static page (History, Downloads):** edit the matching file in `src/content/pages/`.
+- **Add a Conclave / Executive member / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
 - **Tweak colours / typography:** `src/styles/global.css`.
 
 ## Licence
