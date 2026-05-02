@@ -16,6 +16,7 @@ Add a `.md` file to one of the content folders below and merge to `main`. GitHub
 | Events    | `src/content/events/`   | `title`, `date`      |
 | Conclaves | `src/content/conclaves/`| `name`               |
 | Executive | `src/content/executive/`| `name`, `rank`, `role` |
+| Officers  | `src/content/officers/` | `office`             |
 | Pages     | `src/content/pages/`    | `title`              |
 
 A minimal news article looks like:
@@ -32,7 +33,7 @@ Body in **Markdown**.
 
 ### 2. Use the friendly editor at `/admin/`
 
-Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
+Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive, the Divisional Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
 
 To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `src/admin-config.yml` with its URL.
 
@@ -121,16 +122,18 @@ backend:
 .
 ├── astro.config.mjs
 ├── public/
-│   ├── admin/             # Decap CMS (form editor)
+│   ├── admin/             # Decap CMS shell (index.html only; config is generated)
+│   ├── img/               # static images (header logo, etc.)
 │   ├── CNAME              # custom domain
 │   ├── favicon.svg
 │   └── robots.txt
 ├── src/
+│   ├── admin-config.yml   # Decap CMS config source (served via /admin/config.yml)
 │   ├── components/        # Header, Footer
 │   ├── config/site.json   # site title, nav, contact email
 │   ├── content/           # Markdown content collections
 │   ├── layouts/           # BaseLayout, MarkdownPageLayout
-│   ├── pages/             # routes
+│   ├── pages/             # routes (incl. admin/config.yml.ts dev/prod toggle)
 │   └── styles/global.css
 └── .github/workflows/     # build + deploy pipelines
 ```
@@ -139,7 +142,8 @@ backend:
 
 - **Change the title, tagline or nav links:** `src/config/site.json`.
 - **Change a static page (History, Downloads):** edit the matching file in `src/content/pages/`.
-- **Add a Conclave / Executive member / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Add a Conclave / Executive member / Officer / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Edit the navigation, including the Division dropdown:** the `nav` array in `src/config/site.json` accepts `{ label, href }` for top-level links and `{ label, children: [...] }` for grouped submenus.
 - **Tweak colours / typography:** `src/styles/global.css`.
 
 ## Licence
