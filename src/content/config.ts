@@ -40,7 +40,7 @@ const conclaves = defineCollection({
   }),
 });
 
-const officers = defineCollection({
+const executive = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string(),
@@ -64,6 +64,6 @@ export const collections = {
   news,
   events,
   conclaves,
-  officers,
+  executive,
   pages,
 };

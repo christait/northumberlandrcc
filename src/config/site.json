@@ -6,7 +6,7 @@
   "nav": [
     { "label": "Home", "href": "/" },
     { "label": "History", "href": "/history/" },
-    { "label": "Executive", "href": "/officers/" },
+    { "label": "Executive", "href": "/executive/" },
     { "label": "Conclaves", "href": "/conclaves/" },
     { "label": "Events", "href": "/events/" },
     { "label": "News", "href": "/news/" },
