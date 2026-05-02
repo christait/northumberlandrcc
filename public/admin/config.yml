@@ -1,0 +1,117 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# Backend: GitHub via Netlify-compatible OAuth.
+# To enable sign-in, deploy the small OAuth bridge described in the README
+# (e.g. decap-proxy on Cloudflare Workers / Vercel) and set base_url + auth_endpoint
+# below to match your deployment.
+backend:
+  name: github
+  repo: christait/northumberlandrcc
+  branch: main
+  base_url: https://decap-oauth.example.workers.dev
+  auth_endpoint: auth
+
+# While developing locally you can run `npx decap-server` and switch to:
+# backend:
+#   name: git-gateway
+#   branch: main
+# local_backend: true
+
+site_url: https://northumberlandrcc.org.uk
+display_url: https://northumberlandrcc.org.uk
+logo_url: https://northumberlandrcc.org.uk/favicon.svg
+
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: news
+    label: News & Notices
+    label_singular: News article
+    folder: src/content/news
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Publish date, widget: datetime }
+      - { name: summary, label: Short summary, widget: text, required: false }
+      - { name: author, label: Author, widget: string, required: false }
+      - { name: image, label: Header image, widget: image, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/content/events
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{title}} — {{date | date('YYYY-MM-DD HH:mm')}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Start, widget: datetime }
+      - { name: endDate, label: End, widget: datetime, required: false }
+      - { name: location, label: Location, widget: string, required: false }
+      - { name: summary, label: Short summary, widget: text, required: false }
+      - { name: rsvp, label: RSVP / booking link, widget: string, required: false, hint: 'Full URL beginning with https://' }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Details, widget: markdown }
+
+  - name: conclaves
+    label: Conclaves
+    label_singular: Conclave
+    folder: src/content/conclaves
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: number, label: Number, widget: string, required: false }
+      - { name: consecrated, label: Consecrated, widget: string, required: false }
+      - { name: meetingPlace, label: Meeting place, widget: string, required: false }
+      - { name: meetingDates, label: Meeting dates, widget: string, required: false }
+      - { name: recorder, label: Recorder, widget: string, required: false }
+      - { name: recorderEmail, label: Recorder email, widget: string, required: false }
+      - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
+      - { name: body, label: Description / history, widget: markdown }
+
+  - name: officers
+    label: Divisional Officers
+    label_singular: Officer
+    folder: src/content/officers
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: rank, label: Rank, widget: string }
+      - { name: role, label: Role, widget: string }
+      - { name: photo, label: Photograph, widget: image, required: false }
+      - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
+      - { name: body, label: Notes / biography, widget: markdown, required: false }
+
+  - name: pages
+    label: Static pages
+    label_singular: Page
+    folder: src/content/pages
+    create: false
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: eyebrow, label: Eyebrow / kicker, widget: string, required: false }
+      - { name: description, label: Page description, widget: text, required: false }
+      - { name: body, label: Body, widget: markdown }

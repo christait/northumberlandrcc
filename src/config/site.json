@@ -1,0 +1,17 @@
+{
+  "title": "Northumberland Division",
+  "tagline": "Order of the Red Cross of Constantine",
+  "description": "The Divisional website of the Order of the Red Cross of Constantine in Northumberland — news, events, conclaves, history and contact.",
+  "contactEmail": "recorder@northumberlandrcc.org.uk",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "History", "href": "/history/" },
+    { "label": "Officers", "href": "/officers/" },
+    { "label": "Conclaves", "href": "/conclaves/" },
+    { "label": "Events", "href": "/events/" },
+    { "label": "News", "href": "/news/" },
+    { "label": "Downloads", "href": "/downloads/" },
+    { "label": "Contact", "href": "/contact/" }
+  ]
+}

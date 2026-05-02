@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteConfig from '../config/site.json';
+---
+
+<BaseLayout title="Contact" description="Get in touch with the Northumberland Division of the Red Cross of Constantine.">
+  <section class="section">
+    <div class="container prose">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Contact the Division</h1>
+      <p class="muted">
+        For all enquiries — including membership interest, visiting requests and document
+        requests — please contact the Divisional Recorder.
+      </p>
+
+      <h2>Divisional Recorder</h2>
+      <p>
+        Email: <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+      </p>
+
+      <h2>Membership enquiries</h2>
+      <p>
+        Membership of the Order is open to subscribing Royal Arch Masons who profess the
+        Trinitarian Christian faith. Please introduce yourself by email and the Divisional
+        Recorder will be in touch.
+      </p>
+
+      <h2>Postal address</h2>
+      <p class="muted">A postal address will be added here in due course.</p>
+    </div>
+  </section>
+</BaseLayout>

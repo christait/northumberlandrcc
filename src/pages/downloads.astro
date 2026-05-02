@@ -1,0 +1,12 @@
+---
+import { getEntry, render } from 'astro:content';
+import MarkdownPageLayout from '../layouts/MarkdownPageLayout.astro';
+
+const entry = await getEntry('pages', 'downloads');
+if (!entry) throw new Error('Missing pages/downloads.md');
+const { Content } = await render(entry);
+---
+
+<MarkdownPageLayout frontmatter={entry.data}>
+  <Content />
+</MarkdownPageLayout>

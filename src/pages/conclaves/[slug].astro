@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const conclaves = await getCollection('conclaves');
+  return conclaves.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const c = entry.data;
+---
+
+<BaseLayout title={c.name} description={`${c.name} — a Conclave of the Northumberland Division.`}>
+  <section class="section">
+    <div class="container prose">
+      <p><a href="/conclaves/">← All Conclaves</a></p>
+      <span class="eyebrow">Conclave</span>
+      <h1>{c.name}{c.number ? ` No. ${c.number}` : ''}</h1>
+      <ul class="meta">
+        {c.meetingPlace && <li><strong>Meeting place:</strong> {c.meetingPlace}</li>}
+        {c.meetingDates && <li><strong>Meeting dates:</strong> {c.meetingDates}</li>}
+        {c.consecrated && <li><strong>Consecrated:</strong> {c.consecrated}</li>}
+        {c.recorder && <li><strong>Recorder:</strong> {c.recorder}{c.recorderEmail ? <> — <a href={`mailto:${c.recorderEmail}`}>{c.recorderEmail}</a></> : ''}</li>}
+      </ul>
+      <hr />
+      <Content />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .meta { list-style: none; padding: 0; margin: 1rem 0; }
+  .meta li { padding: 0.25rem 0; }
+</style>

@@ -1,0 +1,103 @@
+---
+import siteConfig from '../config/site.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-title">{siteConfig.title}</h3>
+      <p class="muted">{siteConfig.tagline}</p>
+      <p class="muted small">A division of the Grand Imperial Conclave of the United Religious, Military &amp; Masonic Orders of the Temple and of St John of Jerusalem, Palestine, Rhodes and Malta — Order of the Red Cross of Constantine.</p>
+    </div>
+    <div>
+      <h4 class="footer-title">Explore</h4>
+      <ul>
+        {siteConfig.nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-title">Contact</h4>
+      <p class="muted">
+        Divisional Recorder<br />
+        <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+      </p>
+      <p class="muted small">For enquiries about membership, please use the contact form.</p>
+    </div>
+  </div>
+  <div class="container footer-base">
+    <p class="muted small">© {year} {siteConfig.title}. All rights reserved.</p>
+    <p class="muted small">
+      <a href="/admin/">Editor sign-in</a> · <a href="/rss.xml">News feed</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #1d1a17;
+    color: #d8d2c4;
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .site-footer h3,
+  .site-footer h4 {
+    color: #f3ebd6;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-weight: 700;
+  }
+
+  .footer-title {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+
+  .site-footer .muted {
+    color: #b3ad9e;
+  }
+
+  .small {
+    font-size: 0.85rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-footer ul li {
+    margin-bottom: 0.35rem;
+  }
+
+  .site-footer a {
+    color: #e6d8b1;
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .footer-base {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2e2924;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

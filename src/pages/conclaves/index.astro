@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const conclaves = (await getCollection('conclaves')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+---
+
+<BaseLayout title="Conclaves" description="Conclaves of the Order working in the Division of Northumberland.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Where we meet</span>
+      <h1>Conclaves of the Division</h1>
+      <p class="muted">Each Conclave below is part of the Northumberland Division.</p>
+
+      <div class="grid cols-2" style="margin-top:2rem;">
+        {conclaves.map((c) => (
+          <article class="card">
+            <h3 style="margin-bottom:0.4rem;">
+              <a href={`/conclaves/${c.slug}/`}>{c.data.name}{c.data.number ? ` No. ${c.data.number}` : ''}</a>
+            </h3>
+            {c.data.meetingPlace && <p class="muted small">📍 {c.data.meetingPlace}</p>}
+            {c.data.meetingDates && <p class="muted small">🗓 {c.data.meetingDates}</p>}
+            {c.data.consecrated && <p class="muted small">Consecrated {c.data.consecrated}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>.small{font-size:0.85rem;}</style>
