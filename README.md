@@ -34,7 +34,7 @@ Body in **Markdown**.
 
 Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
 
-To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
+To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `src/admin-config.yml` with its URL.
 
 ## Images
 
@@ -71,13 +71,14 @@ npm run build    # production build to ./dist
 npm run preview  # preview the production build
 ```
 
-To work on Decap CMS locally without GitHub sign-in:
+To work on Decap CMS locally without GitHub sign-in, run `decap-server` alongside the Astro dev server:
 
 ```bash
 npx decap-server   # starts the local proxy on :8081
+npm run dev        # serves the admin at http://localhost:4321/admin/
 ```
 
-…and temporarily set `local_backend: true` in `public/admin/config.yml`.
+`local_backend: true` is appended to `/admin/config.yml` automatically when `npm run dev` is running (via `src/pages/admin/config.yml.ts`), so edits write straight to your working tree without GitHub auth. Production builds omit the flag.
 
 ## Deployment
 
@@ -103,7 +104,7 @@ Then in **GitHub → Settings → Developer settings → OAuth Apps** create an 
 - Homepage URL: `https://northumberlandrcc.org.uk`
 - Authorization callback URL: `https://<your-proxy-host>/callback`
 
-Set the resulting client ID/secret as environment variables in your proxy, then update `public/admin/config.yml`:
+Set the resulting client ID/secret as environment variables in your proxy, then update `src/admin-config.yml`:
 
 ```yaml
 backend:
