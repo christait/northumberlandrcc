@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const officers = (await getCollection('officers')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+---
+
+<BaseLayout title="Officers" description="The Divisional Officers of the Northumberland Division of the Red Cross of Constantine.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Annual appointments</span>
+      <h1>Divisional Officers</h1>
+      <p class="muted">The Officers of the Northumberland Division, appointed at each Annual Divisional Meeting.</p>
+
+      <div class="table-wrap" style="margin-top:2rem;">
+        <table class="officers-table">
+          <thead>
+            <tr>
+              <th scope="col">Office</th>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {officers.map((o) => (
+              <tr>
+                <th scope="row">{o.data.office}</th>
+                <td>
+                  {o.data.rank && <span>{o.data.rank} </span>}
+                  {o.data.name ?? ''}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .table-wrap { overflow-x: auto; }
+  .officers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .officers-table th,
+  .officers-table td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--colour-border);
+    vertical-align: top;
+    font-size: 0.95rem;
+  }
+  .officers-table thead th {
+    background: rgba(139, 26, 26, 0.06);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--colour-primary-dark);
+    letter-spacing: 0.04em;
+  }
+  .officers-table tbody tr:last-child th,
+  .officers-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .officers-table tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+</style>
