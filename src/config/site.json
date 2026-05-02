@@ -7,11 +7,16 @@
     { "label": "Home", "href": "/" },
     { "label": "History", "href": "/history/" },
     { "label": "Executive", "href": "/executive/" },
-    { "label": "Officers", "href": "/officers/" },
-    { "label": "Conclaves", "href": "/conclaves/" },
+    {
+      "label": "Division",
+      "children": [
+        { "label": "Conclaves", "href": "/conclaves/" },
+        { "label": "Officers", "href": "/officers/" },
+        { "label": "Downloads", "href": "/downloads/" }
+      ]
+    },
     { "label": "Events", "href": "/events/" },
     { "label": "News", "href": "/news/" },
-    { "label": "Downloads", "href": "/downloads/" },
     { "label": "Contact", "href": "/contact/" }
   ]
 }
