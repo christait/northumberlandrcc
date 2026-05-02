@@ -86,10 +86,10 @@ collections:
       - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
       - { name: body, label: Description / history, widget: markdown }
 
-  - name: officers
-    label: Divisional Officers
-    label_singular: Officer
-    folder: src/content/officers
+  - name: executive
+    label: Divisional Executive
+    label_singular: Executive member
+    folder: src/content/executive
     create: true
     slug: '{{slug}}'
     extension: md
