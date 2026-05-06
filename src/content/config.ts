@@ -70,6 +70,27 @@ const pages = defineCollection({
   }),
 });
 
+const homepage = defineCollection({
+  type: 'data',
+  schema: z.object({
+    heroEyebrow: z.string(),
+    heroLead: z.string(),
+    cta1Label: z.string(),
+    cta1Href: z.string(),
+    cta2Label: z.string(),
+    cta2Href: z.string(),
+    cards: z.array(
+      z.object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        description: z.string(),
+        linkLabel: z.string(),
+        linkHref: z.string(),
+      })
+    ),
+  }),
+});
+
 export const collections = {
   news,
   events,
@@ -77,4 +98,5 @@ export const collections = {
   executive,
   officers,
   pages,
+  homepage,
 };
