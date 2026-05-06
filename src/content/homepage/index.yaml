@@ -1,22 +1,26 @@
-heroEyebrow: "Order of the Red Cross of Constantine"
-heroLead: "Welcoming Royal Arch Masons of the Trinitarian Christian faith into the fellowship of the Red Cross of Constantine and its appendant Orders across Northumberland."
-cta1Label: "About the Division"
-cta1Href: "/history/"
-cta2Label: "Enquire about membership"
-cta2Href: "/contact/"
+heroEyebrow: The Masonic and Military Order of the Red Cross of Constantine and
+  the Orders of the Holy Sepulchre and of St. John the Evangelist
+heroLead: Welcoming Royal Arch Masons of the Trinitarian Christian faith into
+  the fellowship of the Red Cross of Constantine and its appendant Orders across
+  Northumberland.
+cta1Label: About the Division
+cta1Href: /history/
+cta2Label: Enquire about membership
+cta2Href: /contact/
 cards:
-  - eyebrow: "Conclaves"
-    heading: "Where we meet"
-    description: "Find the Conclaves working in Northumberland, their meeting places and dates."
-    linkLabel: "View all Conclaves"
-    linkHref: "/conclaves/"
-  - eyebrow: "Executive"
-    heading: "Divisional team"
-    description: "Meet the Executive who serve the Division and oversee its work."
-    linkLabel: "Meet the Executive"
-    linkHref: "/executive/"
-  - eyebrow: "History"
-    heading: "Our heritage"
-    description: "A short history of the Order and the Northumberland Division."
-    linkLabel: "Read the history"
-    linkHref: "/history/"
+  - eyebrow: Conclaves
+    heading: Where we meet
+    description: Find the Conclaves working in Northumberland, their meeting places
+      and dates.
+    linkLabel: View all Conclaves
+    linkHref: /conclaves/
+  - eyebrow: Executive
+    heading: Divisional team
+    description: Meet the Executive who serve the Division and oversee its work.
+    linkLabel: Meet the Executive
+    linkHref: /executive/
+  - eyebrow: History
+    heading: Our heritage
+    description: A short history of the Order and the Northumberland Division.
+    linkLabel: Read the history
+    linkHref: /history/
