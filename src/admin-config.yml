@@ -9,7 +9,7 @@ backend:
   name: github
   repo: christait/northumberlandrcc
   branch: main
-  base_url: https://decap-oauth.example.workers.dev
+  base_url: https://quiet-cake-4716.chris-ef3.workers.dev
   auth_endpoint: auth
 
 # While developing locally you can run `npx decap-server` and switch to:
