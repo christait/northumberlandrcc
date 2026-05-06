@@ -1,6 +1,12 @@
 ---
 import siteConfig from '../config/site.json';
 const year = new Date().getFullYear();
+
+type NavChild = { label: string; href: string };
+type NavItem = { label: string; href?: string; children?: NavChild[] };
+const navLinks: NavChild[] = (siteConfig.nav as NavItem[]).flatMap((item) =>
+  item.children ? item.children : item.href ? [{ label: item.label, href: item.href }] : []
+);
 ---
 
 <footer class="site-footer">
@@ -13,7 +19,7 @@ const year = new Date().getFullYear();
     <div>
       <h4 class="footer-title">Explore</h4>
       <ul>
-        {siteConfig.nav.map((item) => (
+        {navLinks.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
         ))}
       </ul>

@@ -40,13 +40,23 @@ const conclaves = defineCollection({
   }),
 });
 
-const officers = defineCollection({
+const executive = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string(),
     rank: z.string(),
     role: z.string(),
     photo: z.string().optional(),
+    order: z.number().optional(),
+  }),
+});
+
+const officers = defineCollection({
+  type: 'content',
+  schema: z.object({
+    office: z.string(),
+    name: z.string().optional(),
+    rank: z.string().optional(),
     order: z.number().optional(),
   }),
 });
@@ -64,6 +74,7 @@ export const collections = {
   news,
   events,
   conclaves,
+  executive,
   officers,
   pages,
 };

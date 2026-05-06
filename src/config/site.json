@@ -5,13 +5,18 @@
   "contactEmail": "recorder@northumberlandrcc.org.uk",
   "nav": [
     { "label": "Home", "href": "/" },
-    { "label": "About", "href": "/about/" },
     { "label": "History", "href": "/history/" },
-    { "label": "Officers", "href": "/officers/" },
-    { "label": "Conclaves", "href": "/conclaves/" },
+    { "label": "Executive", "href": "/executive/" },
+    {
+      "label": "Division",
+      "children": [
+        { "label": "Conclaves", "href": "/conclaves/" },
+        { "label": "Officers", "href": "/officers/" },
+        { "label": "Downloads", "href": "/downloads/" }
+      ]
+    },
     { "label": "Events", "href": "/events/" },
     { "label": "News", "href": "/news/" },
-    { "label": "Downloads", "href": "/downloads/" },
     { "label": "Contact", "href": "/contact/" }
   ]
 }

@@ -4,12 +4,24 @@ import siteConfig from '../config/site.json';
 const { pathname } = Astro.url;
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+type NavChild = { label: string; href: string };
+type NavItem = { label: string; href?: string; children?: NavChild[] };
+const nav = siteConfig.nav as NavItem[];
 ---
 
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="brand" aria-label={`${siteConfig.title} home`}>
-      <span class="brand-mark" aria-hidden="true">☩</span>
+      <img
+        class="brand-logo"
+        src="/img/logo.png"
+        alt={`${siteConfig.title} crest`}
+        width="56"
+        height="56"
+        loading="eager"
+        decoding="async"
+      />
       <span class="brand-text">
         <span class="brand-title">{siteConfig.title}</span>
         <span class="brand-sub">{siteConfig.tagline}</span>
@@ -28,15 +40,37 @@ const isActive = (href: string) =>
         <span class="bar"></span>
       </button>
       <ul id="primary-nav" class="nav-list">
-        {siteConfig.nav.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class={isActive(item.href) ? 'is-active' : ''}
-              aria-current={isActive(item.href) ? 'page' : undefined}
-            >
-              {item.label}
-            </a>
+        {nav.map((item) => (
+          <li class={item.children ? 'has-children' : ''}>
+            {item.children ? (
+              <details class="nav-dropdown">
+                <summary class={item.children.some((c) => isActive(c.href)) ? 'is-active' : ''}>
+                  {item.label}
+                  <span class="chevron" aria-hidden="true"></span>
+                </summary>
+                <ul class="nav-submenu">
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        class={isActive(child.href) ? 'is-active' : ''}
+                        aria-current={isActive(child.href) ? 'page' : undefined}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : (
+              <a
+                href={item.href}
+                class={isActive(item.href!) ? 'is-active' : ''}
+                aria-current={isActive(item.href!) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            )}
           </li>
         ))}
       </ul>
@@ -71,16 +105,10 @@ const isActive = (href: string) =>
     color: inherit;
   }
 
-  .brand-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: var(--colour-primary);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 1.25rem;
+  .brand-logo {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
     flex-shrink: 0;
   }
 
@@ -114,20 +142,75 @@ const isActive = (href: string) =>
     align-items: center;
   }
 
-  .nav-list a {
-    display: inline-block;
+  .nav-list a,
+  .nav-list summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     padding: 0.5rem 0.85rem;
     text-decoration: none;
     color: var(--colour-text);
     font-weight: 500;
     border-radius: var(--radius);
     font-size: 0.95rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nav-list summary::-webkit-details-marker {
+    display: none;
   }
 
   .nav-list a:hover,
-  .nav-list a.is-active {
+  .nav-list a.is-active,
+  .nav-list summary:hover,
+  .nav-list summary.is-active {
     background: rgba(139, 26, 26, 0.08);
     color: var(--colour-primary-dark);
+  }
+
+  .chevron {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -0.2rem;
+    transition: transform 0.15s ease;
+  }
+
+  details[open] > summary .chevron {
+    transform: rotate(-135deg);
+    margin-top: 0.15rem;
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    min-width: 12rem;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    z-index: 60;
+  }
+
+  .nav-submenu li {
+    margin: 0;
+  }
+
+  .nav-submenu a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--radius);
   }
 
   .nav-toggle {
@@ -177,12 +260,32 @@ const isActive = (href: string) =>
     .nav-list.is-open {
       display: flex;
     }
-    .nav-list a {
-      display: block;
+    .nav-list a,
+    .nav-list summary {
+      display: flex;
+      justify-content: space-between;
       padding: 0.7rem 0.5rem;
       border-bottom: 1px solid var(--colour-border);
+      border-radius: 0;
     }
-    .nav-list li:last-child a {
+    .nav-list > li:last-child a,
+    .nav-list > li.has-children:last-child summary {
+      border-bottom: none;
+    }
+    .nav-submenu {
+      position: static;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      padding: 0 0 0 1rem;
+      min-width: 0;
+    }
+    .nav-submenu a {
+      padding: 0.55rem 0.5rem;
+      border-bottom: 1px solid var(--colour-border);
+      border-radius: 0;
+    }
+    .nav-submenu li:last-child a {
       border-bottom: none;
     }
   }
@@ -197,4 +300,11 @@ const isActive = (href: string) =>
       toggle.setAttribute('aria-expanded', String(open));
     });
   }
+
+  // Close any open dropdown when clicking outside it (desktop)
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLDetailsElement>('.nav-dropdown[open]').forEach((d) => {
+      if (!d.contains(e.target as Node)) d.removeAttribute('open');
+    });
+  });
 </script>

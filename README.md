@@ -15,7 +15,8 @@ Add a `.md` file to one of the content folders below and merge to `main`. GitHub
 | News      | `src/content/news/`     | `title`, `date`      |
 | Events    | `src/content/events/`   | `title`, `date`      |
 | Conclaves | `src/content/conclaves/`| `name`               |
-| Officers  | `src/content/officers/` | `name`, `rank`, `role` |
+| Executive | `src/content/executive/`| `name`, `rank`, `role` |
+| Officers  | `src/content/officers/` | `office`             |
 | Pages     | `src/content/pages/`    | `title`              |
 
 A minimal news article looks like:
@@ -32,9 +33,33 @@ Body in **Markdown**.
 
 ### 2. Use the friendly editor at `/admin/`
 
-Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
+Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive, the Divisional Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
 
-To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `public/admin/config.yml` with its URL.
+To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `src/admin-config.yml` with its URL.
+
+## Images
+
+Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.svg`.
+
+To pull (or refresh) images from the existing WordPress site, run:
+
+```bash
+npm run fetch:images
+```
+
+This downloads everything listed in `scripts/fetch-images.mjs` to `public/img/`. After running it, commit the new files. The script must be run somewhere with open internet (e.g. a Codespace or your laptop).
+
+## Preview in GitHub Codespaces (no local install required)
+
+1. On the repo page in GitHub, click **Code → Codespaces → Create codespace on `main`**.
+2. Wait for the container to build — `npm install` runs automatically.
+3. In the Codespace terminal, run:
+   ```bash
+   npm run dev
+   ```
+4. Codespaces detects port 4321 and pops up a **"Open in Browser"** notification — click it to view the live preview at a temporary HTTPS URL.
+
+Edits to Markdown content or `.astro` files hot-reload instantly.
 
 ## Local development
 
@@ -47,13 +72,14 @@ npm run build    # production build to ./dist
 npm run preview  # preview the production build
 ```
 
-To work on Decap CMS locally without GitHub sign-in:
+To work on Decap CMS locally without GitHub sign-in, run `decap-server` alongside the Astro dev server:
 
 ```bash
 npx decap-server   # starts the local proxy on :8081
+npm run dev        # serves the admin at http://localhost:4321/admin/
 ```
 
-…and temporarily set `local_backend: true` in `public/admin/config.yml`.
+`local_backend: true` is appended to `/admin/config.yml` automatically when `npm run dev` is running (via `src/pages/admin/config.yml.ts`), so edits write straight to your working tree without GitHub auth. Production builds omit the flag.
 
 ## Deployment
 
@@ -79,7 +105,7 @@ Then in **GitHub → Settings → Developer settings → OAuth Apps** create an 
 - Homepage URL: `https://northumberlandrcc.org.uk`
 - Authorization callback URL: `https://<your-proxy-host>/callback`
 
-Set the resulting client ID/secret as environment variables in your proxy, then update `public/admin/config.yml`:
+Set the resulting client ID/secret as environment variables in your proxy, then update `src/admin-config.yml`:
 
 ```yaml
 backend:
@@ -96,16 +122,18 @@ backend:
 .
 ├── astro.config.mjs
 ├── public/
-│   ├── admin/             # Decap CMS (form editor)
+│   ├── admin/             # Decap CMS shell (index.html only; config is generated)
+│   ├── img/               # static images (header logo, etc.)
 │   ├── CNAME              # custom domain
 │   ├── favicon.svg
 │   └── robots.txt
 ├── src/
+│   ├── admin-config.yml   # Decap CMS config source (served via /admin/config.yml)
 │   ├── components/        # Header, Footer
 │   ├── config/site.json   # site title, nav, contact email
 │   ├── content/           # Markdown content collections
 │   ├── layouts/           # BaseLayout, MarkdownPageLayout
-│   ├── pages/             # routes
+│   ├── pages/             # routes (incl. admin/config.yml.ts dev/prod toggle)
 │   └── styles/global.css
 └── .github/workflows/     # build + deploy pipelines
 ```
@@ -113,8 +141,9 @@ backend:
 ## Editing the site
 
 - **Change the title, tagline or nav links:** `src/config/site.json`.
-- **Change a static page (About, History, Downloads):** edit the matching file in `src/content/pages/`.
-- **Add a Conclave / Officer / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Change a static page (History, Downloads):** edit the matching file in `src/content/pages/`.
+- **Add a Conclave / Executive member / Officer / News item / Event:** add a Markdown file to the relevant folder, or use `/admin/`.
+- **Edit the navigation, including the Division dropdown:** the `nav` array in `src/config/site.json` accepts `{ label, href }` for top-level links and `{ label, children: [...] }` for grouped submenus.
 - **Tweak colours / typography:** `src/styles/global.css`.
 
 ## Licence

@@ -1,8 +1,4 @@
 ---
-name: To Be Announced
-rank: E. Knight
-role: Divisional Recorder
-order: 2
+office: Divisional Recorder
+order: 8
 ---
-
-Responsible for Divisional correspondence, records and returns.
