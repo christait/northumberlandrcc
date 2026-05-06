@@ -27,6 +27,29 @@ media_folder: public/uploads
 public_folder: /uploads
 
 collections:
+  - name: homepage
+    label: Homepage
+    files:
+      - name: homepage
+        label: Homepage content
+        file: src/content/homepage/index.yaml
+        format: yaml
+        fields:
+          - { name: heroEyebrow, label: Hero eyebrow, widget: string }
+          - { name: heroLead, label: Hero lead paragraph, widget: text }
+          - { name: cta1Label, label: Primary button label, widget: string }
+          - { name: cta1Href, label: Primary button link, widget: string }
+          - { name: cta2Label, label: Secondary button label, widget: string }
+          - { name: cta2Href, label: Secondary button link, widget: string }
+          - name: cards
+            label: Info cards
+            widget: list
+            fields:
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: heading, label: Heading, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: linkLabel, label: Link label, widget: string }
+              - { name: linkHref, label: Link URL, widget: string }
   - name: news
     label: News & Notices
     label_singular: News article

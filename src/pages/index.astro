@@ -1,7 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import siteConfig from '../config/site.json';
+
+const { data: hp } = await getEntry('homepage', 'index');
 
 const news = (await getCollection('news', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -23,39 +25,26 @@ const fmtDate = (d: Date) =>
 <BaseLayout>
   <section class="hero">
     <div class="container hero-inner">
-      <span class="eyebrow">Order of the Red Cross of Constantine</span>
+      <span class="eyebrow">{hp.heroEyebrow}</span>
       <h1>{siteConfig.title}</h1>
-      <p class="hero-lead">
-        Welcoming Royal Arch Masons of the Trinitarian Christian faith into the fellowship of the
-        Red Cross of Constantine and its appendant Orders across Northumberland.
-      </p>
+      <p class="hero-lead">{hp.heroLead}</p>
       <div class="hero-actions">
-        <a class="button" href="/history/">About the Division</a>
-        <a class="button secondary" href="/contact/">Enquire about membership</a>
+        <a class="button" href={hp.cta1Href}>{hp.cta1Label}</a>
+        <a class="button secondary" href={hp.cta2Href}>{hp.cta2Label}</a>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container grid cols-3">
-      <article class="card">
-        <span class="eyebrow">Conclaves</span>
-        <h3>Where we meet</h3>
-        <p class="muted">Find the Conclaves working in Northumberland, their meeting places and dates.</p>
-        <p><a href="/conclaves/">View all Conclaves →</a></p>
-      </article>
-      <article class="card">
-        <span class="eyebrow">Executive</span>
-        <h3>Divisional team</h3>
-        <p class="muted">Meet the Executive who serve the Division and oversee its work.</p>
-        <p><a href="/executive/">Meet the Executive →</a></p>
-      </article>
-      <article class="card">
-        <span class="eyebrow">History</span>
-        <h3>Our heritage</h3>
-        <p class="muted">A short history of the Order and the Northumberland Division.</p>
-        <p><a href="/history/">Read the history →</a></p>
-      </article>
+      {hp.cards.map((card) => (
+        <article class="card">
+          <span class="eyebrow">{card.eyebrow}</span>
+          <h3>{card.heading}</h3>
+          <p class="muted">{card.description}</p>
+          <p><a href={card.linkHref}>{card.linkLabel} →</a></p>
+        </article>
+      ))}
     </div>
   </section>
 
