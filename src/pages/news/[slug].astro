@@ -20,6 +20,9 @@ const fmtDate = (d: Date) =>
       <span class="eyebrow">News · {fmtDate(entry.data.date)}</span>
       <h1>{entry.data.title}</h1>
       {entry.data.author && <p class="muted">By {entry.data.author}</p>}
+      {entry.data.image && (
+        <img src={entry.data.image} alt={entry.data.title} style="width:100%;height:auto;border-radius:6px;margin:1rem 0;" />
+      )}
       <hr />
       <Content />
     </div>
