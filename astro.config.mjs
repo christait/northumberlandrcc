@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Site URL — update if a custom domain is set in CNAME (e.g. https://northumberlandrcc.org.uk)
+// Site URL — must match the custom domain in public/CNAME
 export default defineConfig({
-  site: 'https://northumberlandrcc.org.uk',
+  site: 'https://rccnortheast.org.uk',
   trailingSlash: 'ignore',
   integrations: [sitemap()],
   build: {

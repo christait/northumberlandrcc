@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getDiary, upcomingOnly, fmtDiaryDate, typeLabel } from '../../lib/diary';
 
 export async function getStaticPaths() {
   const conclaves = await getCollection('conclaves');
@@ -10,9 +11,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const c = entry.data;
+const dates = upcomingOnly(await getDiary()).filter((e) => e.conclave === entry.slug);
 ---
 
-<BaseLayout title={c.name} description={`${c.name} — a Conclave of the Northumberland Division.`}>
+<BaseLayout title={c.name} description={`${c.name}${c.number ? ` No. ${c.number}` : ''} — a Conclave of the Division of the North East, Red Cross of Constantine.`}>
   <section class="section">
     <div class="container prose">
       <p><a href="/conclaves/">← All Conclaves</a></p>
@@ -21,6 +23,8 @@ const c = entry.data;
       <ul class="meta">
         {c.meetingPlace && <li><strong>Meeting place:</strong> {c.meetingPlace}</li>}
         {c.meetingDates && <li><strong>Meeting dates:</strong> {c.meetingDates}</li>}
+        {c.meetingTime && <li><strong>Time:</strong> {c.meetingTime}</li>}
+        {c.enthronement && <li><strong>Enthronement:</strong> {c.enthronement}</li>}
         {c.consecrated && <li><strong>Consecrated:</strong> {c.consecrated}</li>}
         {(c.recorder || c.recorderEmail) && (
           <li>
@@ -31,6 +35,19 @@ const c = entry.data;
           </li>
         )}
       </ul>
+      {dates.length > 0 && (
+        <>
+          <h2>Forthcoming meetings</h2>
+          <ul class="dates">
+            {dates.map((d) => (
+              <li>
+                <strong>{fmtDiaryDate(d.date, 'long')}</strong>{d.time ? `, ${d.time}` : ''}
+                {d.type !== 'meeting' && <span class="tag"> — {typeLabel[d.type]}</span>}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
       <hr />
       <Content />
     </div>
@@ -40,4 +57,7 @@ const c = entry.data;
 <style>
   .meta { list-style: none; padding: 0; margin: 1rem 0; }
   .meta li { padding: 0.25rem 0; }
+  .dates { list-style: none; padding: 0; }
+  .dates li { padding: 0.3rem 0; border-bottom: 1px solid var(--colour-border); }
+  .tag { color: var(--colour-primary); font-weight: 600; }
 </style>
