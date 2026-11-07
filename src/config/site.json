@@ -4,20 +4,54 @@
   "description": "The Divisional website of the Order of the Red Cross of Constantine in the North East of England — news, Meetings Diary, Conclaves, Officers, history and contact.",
   "contactEmail": "recorder@rccnortheast.org.uk",
   "nav": [
-    { "label": "Home", "href": "/" },
-    { "label": "History", "href": "/history/" },
-    { "label": "Executive", "href": "/executive/" },
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "History",
+      "href": "/history/"
+    },
+    {
+      "label": "Executive",
+      "href": "/executive/"
+    },
     {
       "label": "Division",
       "children": [
-        { "label": "Conclaves", "href": "/conclaves/" },
-        { "label": "Meetings Diary", "href": "/diary/" },
-        { "label": "Officers", "href": "/officers/" },
-        { "label": "Downloads", "href": "/downloads/" }
+        {
+          "label": "Conclaves",
+          "href": "/conclaves/"
+        },
+        {
+          "label": "Meetings Diary",
+          "href": "/diary/"
+        },
+        {
+          "label": "Officers",
+          "href": "/officers/"
+        },
+        {
+          "label": "Downloads",
+          "href": "/downloads/"
+        }
       ]
     },
-    { "label": "Events", "href": "/events/" },
-    { "label": "News", "href": "/news/" },
-    { "label": "Contact", "href": "/contact/" }
-  ]
+    {
+      "label": "Events",
+      "href": "/events/"
+    },
+    {
+      "label": "News",
+      "href": "/news/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
+  ],
+  "social": {
+    "facebook": "",
+    "instagram": "https://www.instagram.com/rccnortheastdivision/"
+  }
 }
