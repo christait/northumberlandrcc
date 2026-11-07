@@ -153,7 +153,7 @@ Content © Division of the North East, Red Cross of Constantine. Source code MIT
 ## Domains
 
 - **Live site:** `https://rccnortheast.org.uk` (set in `public/CNAME`, `astro.config.mjs` and the repo's Pages settings).
-- **Old domain:** `northumberlandrcc.org.uk` is served by the separate repo [`christait/northumberlandrcc-redirect`](https://github.com/christait/northumberlandrcc-redirect), which forwards every path to the same path on the new domain.
+- **Old domain:** `northumberlandrcc.org.uk` is no longer served by this repo. A top-level redirect on its DNS (Cloudflare) sends visitors to `https://rccnortheast.org.uk`.
 
 ## Meetings Diary
 
