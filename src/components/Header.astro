@@ -1,5 +1,6 @@
 ---
 import siteConfig from '../config/site.json';
+import { socialLinks } from '../lib/social';
 
 const { pathname } = Astro.url;
 const isActive = (href: string) =>
@@ -71,6 +72,14 @@ const nav = siteConfig.nav as NavItem[];
                 {item.label}
               </a>
             )}
+          </li>
+        ))}
+        {socialLinks.map((l) => (
+          <li class="nav-social">
+            <a href={l.href} target="_blank" rel="noopener" aria-label={`${siteConfig.title} on ${l.name}`} title={l.name}>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d={l.path} /></svg>
+              <span class="nav-social-label">{l.name}</span>
+            </a>
           </li>
         ))}
       </ul>
@@ -213,6 +222,18 @@ const nav = siteConfig.nav as NavItem[];
     border-radius: var(--radius);
   }
 
+  .nav-social a {
+    padding: 0.5rem 0.6rem;
+  }
+  .nav-social-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
   .nav-toggle {
     display: none;
     background: none;
@@ -259,6 +280,17 @@ const nav = siteConfig.nav as NavItem[];
     }
     .nav-list.is-open {
       display: flex;
+    }
+    .nav-social a {
+      justify-content: flex-start;
+      gap: 0.6rem;
+    }
+    .nav-social-label {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip: auto;
     }
     .nav-list a,
     .nav-list summary {
