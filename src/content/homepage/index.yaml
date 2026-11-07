@@ -2,7 +2,7 @@ heroEyebrow: The Masonic and Military Order of the Red Cross of Constantine and
   the Orders of the Holy Sepulchre and of St. John the Evangelist
 heroLead: Welcoming Royal Arch Masons of the Trinitarian Christian faith into
   the fellowship of the Red Cross of Constantine and its appendant Orders across
-  Northumberland.
+  the North East of England. Stronger together.
 cta1Label: About the Division
 cta1Href: /history/
 cta2Label: Enquire about membership
@@ -10,17 +10,19 @@ cta2Href: /contact/
 cards:
   - eyebrow: Conclaves
     heading: Where we meet
-    description: Find the Conclaves working in Northumberland, their meeting places
-      and dates.
+    description: Nine Conclaves meeting in Jesmond, Shildon, Sunderland, Ashington,
+      Hexham, Stanley, Chester-le-Street and Cramlington.
     linkLabel: View all Conclaves
     linkHref: /conclaves/
+  - eyebrow: Meetings Diary
+    heading: 2026 – 2027
+    description: Every Conclave meeting for the year, with Enthronements and
+      Divisional visits highlighted.
+    linkLabel: See the diary
+    linkHref: /diary/
   - eyebrow: Executive
     heading: Divisional team
-    description: Meet the Executive who serve the Division and oversee its work.
+    description: Meet the Intendant-General and the Executive who lead the
+      Division of the North East.
     linkLabel: Meet the Executive
     linkHref: /executive/
-  - eyebrow: History
-    heading: Our heritage
-    description: A short history of the Order and the Northumberland Division.
-    linkLabel: Read the history
-    linkHref: /history/

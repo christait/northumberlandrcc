@@ -1,0 +1,35 @@
+title: Meetings Diary 2026-2027
+notes: >-
+  The Intendant-General and his Divisional Officers will make formal visits to
+  Conclaves as shown. Please confirm details with the Conclave Recorder before
+  attending.
+entries:
+  - { date: 2026-11-20, time: "6.30 pm", meeting: Aycliffe, conclave: aycliffe, where: Shildon }
+  - { date: 2026-12-08, time: "7.00 pm", meeting: Earl of Scarbrough, conclave: earl-of-scarbrough, where: Chester-le-Street }
+  - { date: 2026-12-21, time: "6.30 pm", meeting: King Oswald, conclave: king-oswald, where: Ashington, type: enthronement }
+  - { date: 2027-01-09, time: "11.00 am", meeting: Amity, conclave: amity, where: Stanley }
+  - { date: 2027-02-09, time: "7.00 pm", meeting: Earl of Scarbrough, conclave: earl-of-scarbrough, where: Chester-le-Street, type: visit }
+  - { date: 2027-02-12, time: "7.00 pm", meeting: Heabrym, conclave: heabrym, where: Sunderland, type: enthronement }
+  - { date: 2027-02-15, time: "6.30 pm", meeting: King Oswald, conclave: king-oswald, where: Ashington }
+  - { date: 2027-02-25, time: "7.00 pm", meeting: Astley, conclave: astley, where: Cramlington, type: enthronement }
+  - { date: 2027-03-18, time: "7.00 pm", meeting: Royal Kent, conclave: royal-kent, where: Jesmond }
+  - { date: 2027-03-19, time: "6.30 pm", meeting: Aycliffe, conclave: aycliffe, where: Shildon }
+  - { date: 2027-03-22, time: "6.30 pm", meeting: Bishop Acca, conclave: bishop-acca, where: Hexham, type: visit }
+  - { date: 2027-03-31, time: "7.00 pm", meeting: Prince Bishop, conclave: prince-bishop, where: Chester-le-Street }
+  - { date: 2027-04-10, time: "11.00 am", meeting: Amity, conclave: amity, where: Stanley }
+  - { date: 2027-04-13, time: "7.00 pm", meeting: Earl of Scarbrough, conclave: earl-of-scarbrough, where: Chester-le-Street }
+  - { date: 2027-04-29, time: "7.00 pm", meeting: Astley, conclave: astley, where: Cramlington, type: visit }
+  - { date: 2027-05-14, time: "7.00 pm", meeting: Heabrym, conclave: heabrym, where: Sunderland, type: visit }
+  - { date: 2027-05-17, time: "6.30 pm", meeting: Bishop Acca, conclave: bishop-acca, where: Hexham, type: enthronement }
+  - { date: 2027-05-20, time: "7.00 pm", meeting: Royal Kent, conclave: royal-kent, where: Jesmond }
+  - { date: 2027-07-06, meeting: Grand Imperial Conclave, where: "Great Queen Street, London" }
+  - { date: 2027-09-16, time: "7.00 pm", meeting: Royal Kent, conclave: royal-kent, where: Jesmond, type: enthronement }
+  - { date: 2027-09-17, time: "6.30 pm", meeting: Aycliffe, conclave: aycliffe, where: Shildon, type: enthronement }
+  - { date: 2027-09-29, time: "7.00 pm", meeting: Prince Bishop, conclave: prince-bishop, where: Chester-le-Street, type: enthronement }
+  - { date: 2027-10-08, time: "7.00 pm", meeting: Heabrym, conclave: heabrym, where: Sunderland }
+  - { date: 2027-10-09, time: "11.00 am", meeting: Amity, conclave: amity, where: Stanley, type: enthronement }
+  - { date: 2027-10-12, time: "7.00 pm", meeting: Earl of Scarbrough, conclave: earl-of-scarbrough, where: Chester-le-Street, type: enthronement }
+  - { date: 2027-10-18, time: "6.30 pm", meeting: King Oswald, conclave: king-oswald, where: Ashington }
+  - { date: 2027-10-25, time: "6.30 pm", meeting: Bishop Acca, conclave: bishop-acca, where: Hexham }
+  - { date: 2027-10-28, time: "7.00 pm", meeting: Astley, conclave: astley, where: Cramlington }
+  - { date: 2027-11-06, meeting: Divisional Annual Meeting, where: "Freemasons' Hall, Alexandra Road, Gateshead", type: annual }

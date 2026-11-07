@@ -1,6 +1,6 @@
 ---
 name: Paul McKay
-rank: Ill. Kt.
+rank: P. Kt.
 role: Divisional Recorder
-order: 4
+order: 5
 ---
