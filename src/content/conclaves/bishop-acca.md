@@ -1,11 +1,18 @@
 ---
-name: Bishop Acca Conclave
+name: "Bishop Acca Conclave"
 number: 333
-meetingPlace: Masonic Hall, Westfield Terrace, Hexham, NE46 3DJ
-recorderEmail: w.bewick@btinternet.com
-order: 3
+consecrated: "21 May 1979"
+meetingPlace: "Masonic Hall, Westfield Terrace, Hexham, NE46 3DJ"
+town: "Hexham"
+meetingDates: "Fourth Monday in March and October; third Monday in May"
+meetingTime: "6.30 pm"
+enthronement: "May"
+members: 15
+recorder: "W. Bewick"
+recorderEmail: "jtomlin1947@outlook.com"
+order: 333
 ---
 
-Bishop Acca Conclave No. 333 meets at the Masonic Hall, Westfield Terrace, Hexham.
+Bishop Acca Conclave No. 333 meets at the Masonic Hall, Hexham, at 6.30 pm. The Enthronement meeting is held in May.
 
-For meeting dates, dining returns and visiting enquiries, please contact the Recorder.
+Visitors are warmly welcome. For dining returns and visiting enquiries, please contact the Recorder.

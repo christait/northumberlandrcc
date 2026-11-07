@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Daily rebuild so 'next meetings' and upcoming events stay current
+  schedule:
+    - cron: '15 4 * * *'
 
 permissions:
   contents: read

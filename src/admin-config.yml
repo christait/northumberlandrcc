@@ -18,9 +18,9 @@ backend:
 #   branch: main
 # local_backend: true
 
-site_url: https://northumberlandrcc.org.uk
-display_url: https://northumberlandrcc.org.uk
-logo_url: https://northumberlandrcc.org.uk/favicon.svg
+site_url: https://rccnortheast.org.uk
+display_url: https://rccnortheast.org.uk
+logo_url: https://rccnortheast.org.uk/img/logo.png
 
 publish_mode: editorial_workflow
 media_folder: public/uploads
@@ -104,6 +104,10 @@ collections:
       - { name: consecrated, label: Consecrated, widget: string, required: false }
       - { name: meetingPlace, label: Meeting place, widget: string, required: false }
       - { name: meetingDates, label: Meeting dates, widget: string, required: false }
+      - { name: meetingTime, label: Meeting time, widget: string, required: false, hint: 'e.g. 7.00 pm' }
+      - { name: town, label: Town, widget: string, required: false }
+      - { name: enthronement, label: Enthronement month, widget: string, required: false }
+      - { name: members, label: Members, widget: number, required: false, value_type: int }
       - { name: recorder, label: Recorder, widget: string, required: false }
       - { name: recorderEmail, label: Recorder email, widget: string, required: false }
       - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
@@ -137,7 +141,31 @@ collections:
       - { name: office, label: Office, widget: string }
       - { name: name, label: Name, widget: string, required: false }
       - { name: rank, label: Rank, widget: string, required: false }
+      - { name: conclave, label: Conclave number, widget: string, required: false }
+      - { name: group, label: Group, widget: select, options: ['Divisional Officers', 'Sepulchre Guard'], default: 'Divisional Officers' }
       - { name: order, label: Display order, widget: number, required: false, default: 99, value_type: int }
+
+  - name: diary
+    label: Meetings Diary
+    files:
+      - name: diary-2026-2027
+        label: Meetings Diary 2026-2027
+        file: src/content/diary/2026-2027.yaml
+        format: yaml
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: notes, label: Notes, widget: text, required: false }
+          - name: entries
+            label: Meetings
+            widget: list
+            summary: "{{fields.date}} — {{fields.meeting}}"
+            fields:
+              - { name: date, label: Date, widget: datetime, time_format: false, date_format: 'YYYY-MM-DD', format: 'YYYY-MM-DD' }
+              - { name: time, label: Time, widget: string, required: false, hint: 'e.g. 7.00 pm' }
+              - { name: meeting, label: Meeting, widget: string }
+              - { name: conclave, label: Conclave page (slug), widget: string, required: false, hint: 'e.g. royal-kent' }
+              - { name: where, label: Where, widget: string, required: false }
+              - { name: type, label: Type, widget: select, options: [meeting, enthronement, visit, annual], default: meeting }
 
   - name: pages
     label: Static pages

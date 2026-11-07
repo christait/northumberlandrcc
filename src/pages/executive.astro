@@ -11,16 +11,19 @@ const rendered = await Promise.all(
 );
 ---
 
-<BaseLayout title="Executive" description="The Divisional Executive of the Northumberland Division of the Red Cross of Constantine.">
+<BaseLayout title="Executive" description="The Divisional Executive of the Division of the North East, Red Cross of Constantine.">
   <section class="section">
     <div class="container">
       <span class="eyebrow">Divisional team</span>
       <h1>The Divisional Executive</h1>
-      <p class="muted">The Executive of the Northumberland Division — appointed for several years and responsible for its overall direction.</p>
+      <p class="muted">The Executive of the Division of the North East — responsible for its overall direction.</p>
 
       <div class="grid cols-2" style="margin-top:2rem;">
         {rendered.map(({ entry, Content }) => (
           <article class="card">
+            {entry.data.photo && (
+              <img class="exec-photo" src={entry.data.photo} alt={`${entry.data.rank} ${entry.data.name}, ${entry.data.role}`} loading="lazy" />
+            )}
             <p class="eyebrow" style="margin-bottom:0.4rem;">{entry.data.role}</p>
             <h3 style="margin-bottom:0.25rem;">{entry.data.name}</h3>
             <p class="muted small" style="margin-bottom:0.75rem;">{entry.data.rank}</p>
@@ -34,4 +37,11 @@ const rendered = await Promise.all(
 
 <style>
   .small { font-size: 0.85rem; }
+  .exec-photo {
+    display: block;
+    width: 9rem;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
 </style>

@@ -1,6 +1,6 @@
 ---
-name: John Tomlin
-rank: Ill. Kt.
+name: Mark Julian Gilpin
+rank: P. Kt.
 role: Deputy Intendant-General
 order: 2
 ---

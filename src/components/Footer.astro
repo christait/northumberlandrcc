@@ -1,6 +1,8 @@
 ---
 import siteConfig from '../config/site.json';
+import { socialLinks } from '../lib/social';
 const year = new Date().getFullYear();
+
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href?: string; children?: NavChild[] };
@@ -14,7 +16,7 @@ const navLinks: NavChild[] = (siteConfig.nav as NavItem[]).flatMap((item) =>
     <div>
       <h3 class="footer-title">{siteConfig.title}</h3>
       <p class="muted">{siteConfig.tagline}</p>
-      <p class="muted small">A division of the Grand Imperial Conclave of The Masonic and Military Order of the Red Cross of Constantine and the Orders of the Holy Sepulchre and of St. John the Evangelist &amp; </p>
+      <p class="muted small">A division of the Grand Imperial Conclave of The Masonic and Military Order of the Red Cross of Constantine and the Orders of the Holy Sepulchre and of St. John the Evangelist.</p>
     </div>
     <div>
       <h4 class="footer-title">Explore</h4>
@@ -30,7 +32,19 @@ const navLinks: NavChild[] = (siteConfig.nav as NavItem[]).flatMap((item) =>
         Divisional Recorder<br />
         <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
       </p>
-      <p class="muted small">For enquiries about membership, please use the contact form.</p>
+      <p class="muted small">For enquiries about membership, please email the Divisional Recorder.</p>
+      {socialLinks.length > 0 && (
+        <ul class="social" aria-label="Follow us">
+          {socialLinks.map((l) => (
+            <li>
+              <a href={l.href} target="_blank" rel="noopener" aria-label={`${siteConfig.title} on ${l.name}`}>
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d={l.path} /></svg>
+                <span>{l.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </div>
   <div class="container footer-base">
@@ -95,6 +109,18 @@ const navLinks: NavChild[] = (siteConfig.nav as NavItem[]).flatMap((item) =>
   .site-footer a:hover {
     color: #fff;
     text-decoration: underline;
+  }
+
+  .site-footer .social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .site-footer .social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
   }
 
   .footer-base {
