@@ -17,17 +17,19 @@ const fmtDate = (d: Date) =>
       <h1>News &amp; notices</h1>
       <p class="muted">Subscribe via the <a href="/rss.xml">RSS feed</a>.</p>
 
-      <div class="grid cols-2" style="margin-top:2rem;">
+      <div class="news-list" style="margin-top:2rem;">
         {news.map((n) => (
-          <article class="card">
+          <article class:list={['card', 'news-card', { 'has-thumb': n.data.image }]}>
             {n.data.image && (
-              <a href={`/news/${n.slug}/`}>
-                <img src={n.data.image} alt={n.data.title} class="thumb" loading="lazy" decoding="async" />
+              <a href={`/news/${n.slug}/`} class="thumb-link" tabindex="-1" aria-hidden="true">
+                <img src={n.data.image} alt="" class="thumb" loading="lazy" decoding="async" />
               </a>
             )}
-            <p class="muted small">{fmtDate(n.data.date)}</p>
-            <h3><a href={`/news/${n.slug}/`}>{n.data.title}</a></h3>
-            {n.data.summary && <p class="muted">{n.data.summary}</p>}
+            <div class="news-text">
+              <p class="muted small">{fmtDate(n.data.date)}</p>
+              <h3><a href={`/news/${n.slug}/`}>{n.data.title}</a></h3>
+              {n.data.summary && <p class="muted">{n.data.summary}</p>}
+            </div>
           </article>
         ))}
       </div>
@@ -36,6 +38,24 @@ const fmtDate = (d: Date) =>
 </BaseLayout>
 
 <style>
-  .small{font-size:0.85rem;}
-  .thumb{display:block;width:100%;height:200px;object-fit:cover;object-position:center top;border-radius:6px;margin-bottom:1rem;}
+  .small { font-size: 0.85rem; }
+  .news-list { display: grid; gap: 1.5rem; }
+  .news-card.has-thumb {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  /* Natural aspect ratio: no cropping, whatever the photo's shape */
+  .thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .news-text > :first-child { margin-top: 0; }
+  .news-text h3 { margin-top: 0.25rem; }
+  @media (max-width: 640px) {
+    .news-card.has-thumb { grid-template-columns: 7rem 1fr; gap: 1rem; }
+  }
 </style>
