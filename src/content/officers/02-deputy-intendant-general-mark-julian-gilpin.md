@@ -1,5 +1,5 @@
 ---
-office: Deputy Intendant-General
+office: Deputy Intendant General
 name: Mark Julian Gilpin
 rank: P. Kt.
 conclave: 383
