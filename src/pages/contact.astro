@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import siteConfig from '../config/site.json';
+const social = (siteConfig as { social?: { facebook?: string; instagram?: string } }).social ?? {};
 ---
 
 <BaseLayout title="Contact" description="Get in touch with the Division of the North East of the Red Cross of Constantine.">
@@ -17,6 +18,16 @@ import siteConfig from '../config/site.json';
       <p>
         Email: <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
       </p>
+
+      {(social.facebook || social.instagram) && (
+        <>
+          <h2>Follow us</h2>
+          <ul>
+            {social.facebook && <li><a href={social.facebook} target="_blank" rel="noopener">Facebook</a></li>}
+            {social.instagram && <li><a href={social.instagram} target="_blank" rel="noopener">Instagram</a></li>}
+          </ul>
+        </>
+      )}
 
       <h2>Membership enquiries</h2>
       <p>
