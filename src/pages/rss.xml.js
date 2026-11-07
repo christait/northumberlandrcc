@@ -5,7 +5,7 @@ import siteConfig from '../config/site.json';
 export async function GET(context) {
   const news = await getCollection('news', ({ data }) => !data.draft);
   return rss({
-    title: `${siteConfig.title} — News`,
+    title: `${siteConfig.title} News`,
     description: siteConfig.description,
     site: context.site,
     items: news

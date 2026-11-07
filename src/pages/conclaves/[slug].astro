@@ -14,7 +14,7 @@ const c = entry.data;
 const dates = upcomingOnly(await getDiary()).filter((e) => e.conclave === entry.slug);
 ---
 
-<BaseLayout title={c.name} description={`${c.name}${c.number ? ` No. ${c.number}` : ''} — a Conclave of the Division of the North East, Red Cross of Constantine.`}>
+<BaseLayout title={c.name} description={`${c.name}${c.number ? ` No. ${c.number}` : ''}, a Conclave of the Division of the North East, Red Cross of Constantine.`}>
   <section class="section">
     <div class="container prose">
       <p><a href="/conclaves/">← All Conclaves</a></p>
@@ -30,7 +30,7 @@ const dates = upcomingOnly(await getDiary()).filter((e) => e.conclave === entry.
           <li>
             <strong>Recorder:</strong>{' '}
             {c.recorder}
-            {c.recorder && c.recorderEmail ? ' — ' : ''}
+            {c.recorder && c.recorderEmail ? ', ' : ''}
             {c.recorderEmail && <a href={`mailto:${c.recorderEmail}`}>{c.recorderEmail}</a>}
           </li>
         )}
@@ -42,7 +42,7 @@ const dates = upcomingOnly(await getDiary()).filter((e) => e.conclave === entry.
             {dates.map((d) => (
               <li>
                 <strong>{fmtDiaryDate(d.date, 'long')}</strong>{d.time ? `, ${d.time}` : ''}
-                {d.type !== 'meeting' && <span class="tag"> — {typeLabel[d.type]}</span>}
+                {d.type !== 'meeting' && <span class="tag"> · {typeLabel[d.type]}</span>}
               </li>
             ))}
           </ul>

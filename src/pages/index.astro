@@ -62,7 +62,7 @@ const fmtDate = (d: Date) =>
             <article class="card">
               <p class="muted small">{fmtDiaryDate(m.date, 'long')}{m.time ? ` · ${m.time}` : ''}</p>
               <h3>{m.conclave ? <a href={`/conclaves/${m.conclave}/`}>{m.meeting}</a> : m.meeting}</h3>
-              <p class="muted">{m.where}{m.type !== 'meeting' ? ` — ${typeLabel[m.type]}` : ''}</p>
+              <p class="muted">{m.where}{m.type !== 'meeting' ? ` · ${typeLabel[m.type]}` : ''}</p>
             </article>
           ))}
         </div>
