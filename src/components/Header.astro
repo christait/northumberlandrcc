@@ -23,7 +23,7 @@ const nav = siteConfig.nav as NavItem[];
         decoding="async"
       />
       <span class="brand-text">
-        <span class="brand-title">{siteConfig.title}</span>
+        <span class="brand-title">{siteConfig.headerTitle ?? siteConfig.title}</span>
         <span class="brand-sub">{siteConfig.tagline}</span>
       </span>
     </a>
