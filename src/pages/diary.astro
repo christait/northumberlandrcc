@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDiary, upcomingOnly, fmtDiaryDate, typeLabel } from '../lib/diary';
+
+const files = await getCollection('diary');
+const notes = files.map((f) => f.data.notes).filter(Boolean);
+const all = await getDiary();
+const upcomingSet = new Set(upcomingOnly(all));
+
+// Group by month for readability
+const months: { label: string; entries: typeof all }[] = [];
+for (const e of all) {
+  const label = e.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const last = months[months.length - 1];
+  if (last && last.label === label) last.entries.push(e);
+  else months.push({ label, entries: [e] });
+}
+---
+
+<BaseLayout title="Meetings Diary" description="Meetings Diary 2026-2027 for the Conclaves of the Division of the North East, including Enthronements and Divisional visits.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">2026 – 2027</span>
+      <h1>Meetings Diary</h1>
+      {notes.map((n) => <p class="muted">{n}</p>)}
+
+      <ul class="legend" aria-label="Key">
+        <li><span class="badge enthronement">Enthronement</span></li>
+        <li><span class="badge visit">Divisional visit</span></li>
+        <li><span class="badge annual">Annual Meeting</span></li>
+      </ul>
+
+      <div class="table-wrap">
+        <table class="diary">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Meeting</th>
+              <th scope="col">Where</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          {months.map((m) => (
+            <tbody>
+              <tr class="month"><th colspan="4" scope="rowgroup">{m.label}</th></tr>
+              {m.entries.map((e) => (
+                <tr class:list={[e.type, { past: !upcomingSet.has(e) }]}>
+                  <td class="nowrap">{fmtDiaryDate(e.date)}</td>
+                  <td>
+                    {e.conclave ? <a href={`/conclaves/${e.conclave}/`}>{e.meeting}</a> : e.meeting}
+                    {e.type !== 'meeting' && <span class:list={['badge', e.type]}>{typeLabel[e.type]}</span>}
+                  </td>
+                  <td>{e.where}</td>
+                  <td class="nowrap">{e.time ?? ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legend { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.5rem; }
+  .table-wrap { overflow-x: auto; }
+  .diary {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+  }
+  .diary th, .diary td {
+    text-align: left;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--colour-border);
+    font-size: 0.95rem;
+    vertical-align: top;
+  }
+  .diary thead th {
+    background: rgba(139, 26, 26, 0.06);
+    color: var(--colour-primary-dark);
+    font-weight: 700;
+  }
+  .diary tr.month th {
+    background: var(--colour-bg);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--colour-primary-dark);
+  }
+  .diary tr.enthronement td { background: rgba(46, 125, 50, 0.08); }
+  .diary tr.visit td { background: rgba(139, 26, 26, 0.08); }
+  .diary tr.annual td { background: rgba(176, 138, 62, 0.14); font-weight: 600; }
+  .diary tr.past td { opacity: 0.55; }
+  .nowrap { white-space: nowrap; }
+  .badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+  }
+  .legend .badge { margin-left: 0; }
+  .badge.enthronement { background: #2e7d32; color: #fff; }
+  .badge.visit { background: var(--colour-primary); color: #fff; }
+  .badge.annual { background: var(--colour-accent); color: #fff; }
+  .badge { white-space: nowrap; }
+
+  /* Phones: stack each meeting as a compact card instead of a wide table */
+  @media (max-width: 640px) {
+    .diary, .diary tbody, .diary tr, .diary td, .diary th { display: block; }
+    .diary thead { display: none; }
+    .diary tr:not(.month) {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.15rem 0.75rem;
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--colour-border);
+    }
+    .diary tr:not(.month) td { padding: 0; border: none; background: none !important; }
+    .diary tr:not(.month) td:nth-child(1) { font-weight: 600; }
+    .diary tr:not(.month) td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+    .diary tr:not(.month) td:nth-child(3) { grid-column: 1 / -1; grid-row: 3; color: var(--colour-muted); }
+    .diary tr:not(.month) td:nth-child(4) { grid-column: 2; grid-row: 1; text-align: right; }
+    .diary tr.enthronement { background: rgba(46, 125, 50, 0.08); }
+    .diary tr.visit { background: rgba(139, 26, 26, 0.08); }
+    .diary tr.annual { background: rgba(176, 138, 62, 0.14); }
+    .diary tr.past { opacity: 0.55; }
+    .diary tr.past td { opacity: 1; }
+  }
+</style>

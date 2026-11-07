@@ -1,5 +1,5 @@
 {
-  "name": "Northumberland RCC",
+  "name": "RCC Division of the North East",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
   "postCreateCommand": "npm ci || npm install",
   "forwardPorts": [4321],

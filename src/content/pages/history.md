@@ -2,13 +2,13 @@
 title: History of the Order
 eyebrow: Heritage
 description: A short history of the Masonic and Military Order of the Red Cross
-  of Constantine and the Northumberland Division.
+  of Constantine and the Division of the North East.
 ---
 The full title of the Order — the *Masonic and Military Order of the Red Cross of Constantine and the Appendant Orders of the Holy Sepulchre and of Saint John the Evangelist* — points to its character as a Christian degree system within Freemasonry. It is open only to subscribing Royal Arch Masons who profess the Trinitarian Christian faith, and its ceremonies draw heavily on the ideals of early Christian chivalry and the devotional life of the medieval Church.
 
 ## Constantine and the sign in the sky
 
-The Order takes its central imagery from a celebrated episode of late Roman history. On the eve of the Battle of the Milvian Bridge, fought on 28 October AD 312, the Emperor Constantine is said to have seen a cross of light above the sun, accompanied by the Greek words later rendered in Latin as **In Hoc Signo Vinces** — "in this sign, thou shall conquer." Marching beneath the *labarum*, a standard bearing the Chi‑Rho monogram of Christ, Constantine defeated his rival Maxentius and, in time, set the Empire on the path to its Christian future. The cross, the monogram and the motto remain the principal emblems of the Order.
+The Order takes its central imagery from a celebrated episode of late Roman history. On the eve of the Battle of the Milvian Bridge, fought on 28 October AD 312, the Emperor Constantine is said to have seen a cross of light above the sun, accompanied by the Greek words later rendered in Latin as **In Hoc Signo Vinces** — "in this sign, thou shalt conquer." Marching beneath the *labarum*, a standard bearing the Chi‑Rho monogram of Christ, Constantine defeated his rival Maxentius and, in time, set the Empire on the path to its Christian future. The cross, the monogram and the motto remain the principal emblems of the Order.
 
 ## The eighteenth and early nineteenth centuries
 
@@ -24,12 +24,16 @@ The Red Cross of Constantine itself comprises three degrees, completed by the tw
 
 ## Governance
 
-In England and Wales, the Order is constituted under the **Grand Imperial Conclave of England and Wales and its Districts and Conclaves Overseas**, with subordinate Divisions and Districts that oversee local Conclaves. Northumberland is one such Division, led by its Intendant‑General.
+In England and Wales, the Order is constituted under the **Grand Imperial Conclave of England and Wales and its Districts and Conclaves Overseas**, with subordinate Divisions and Districts that oversee local Conclaves. The Division of the North East is one such Division, led by its Intendant‑General.
 
-## In Northumberland
+## The Division of the North East
 
-The Division of Northumberland has long enjoyed a strong fraternal life, with Conclaves meeting in venues across the county. Detailed historical notes for each Conclave are gathered on the [Conclaves](/conclaves/) page.
+The Division of the North East was formed in 2026, bringing together the Conclaves of the former Divisions of Northumberland and Durham. Its first Intendant-General is Right Illustrious Knight Trevor Fish, who had led the Division of Northumberland since 2023, and its first Divisional Meeting was held on 7 November 2026.
 
-> *"In this sign, though shall conquer."* — the words said to have appeared to Constantine before the Battle of the Milvian Bridge, AD 312.
+The new Division has nine Conclaves, meeting in Jesmond, Shildon, Sunderland, Ashington, Hexham, Stanley, Chester-le-Street and Cramlington. The oldest, Royal Kent Conclave No. 152, was consecrated in 1893. The Division's crest bears the words *Fidelitas, Unitas et Fervor* (fidelity, unity and zeal), and its watchword for the years ahead is **Stronger Together**.
+
+Detailed notes for each Conclave are on the [Conclaves](/conclaves/) page.
+
+> *"In this sign, thou shalt conquer."* — the words said to have appeared to Constantine before the Battle of the Milvian Bridge, AD 312.
 
 If you are researching the history of a particular Conclave, the Divisional Recorder will be glad to help with archival enquiries.

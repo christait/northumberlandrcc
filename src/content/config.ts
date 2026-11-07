@@ -34,6 +34,10 @@ const conclaves = defineCollection({
     consecrated: z.string().optional(),
     meetingPlace: z.string().optional(),
     meetingDates: z.string().optional(),
+    meetingTime: z.string().optional(),
+    town: z.string().optional(),
+    enthronement: z.string().optional(),
+    members: z.number().optional(),
     recorder: z.string().optional(),
     recorderEmail: z.string().email().optional(),
     order: z.number().optional(),
@@ -57,6 +61,8 @@ const officers = defineCollection({
     office: z.string(),
     name: z.string().optional(),
     rank: z.string().optional(),
+    conclave: z.union([z.string(), z.number()]).optional(),
+    group: z.enum(['Divisional Officers', 'Sepulchre Guard']).optional().default('Divisional Officers'),
     order: z.number().optional(),
   }),
 });
@@ -91,7 +97,26 @@ const homepage = defineCollection({
   }),
 });
 
+const diary = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    notes: z.string().optional(),
+    entries: z.array(
+      z.object({
+        date: z.coerce.date(),
+        time: z.string().optional(),
+        meeting: z.string(),
+        conclave: z.string().optional(),
+        where: z.string().optional(),
+        type: z.enum(['meeting', 'enthronement', 'visit', 'annual']).optional().default('meeting'),
+      })
+    ),
+  }),
+});
+
 export const collections = {
+  diary,
   news,
   events,
   conclaves,

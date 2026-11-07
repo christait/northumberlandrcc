@@ -1,6 +1,6 @@
 ---
-name: J. Sidney Moor
+name: Jim Palfreyman
 rank: Ill. Kt.
 role: Divisional Treasurer
-order: 3
+order: 4
 ---

@@ -1,6 +1,6 @@
-# Northumberland Division — Order of the Red Cross of Constantine
+# Division of the North East — Order of the Red Cross of Constantine
 
-Static website for the Northumberland Division, built with [Astro](https://astro.build/), authored in Markdown, edited via [Decap CMS](https://decapcms.org/), and deployed to GitHub Pages.
+Static website for the Division of the North East, built with [Astro](https://astro.build/), authored in Markdown, edited via [Decap CMS](https://decapcms.org/), and deployed to GitHub Pages.
 
 ## How content gets onto the site
 
@@ -33,13 +33,13 @@ Body in **Markdown**.
 
 ### 2. Use the friendly editor at `/admin/`
 
-Visit `https://northumberlandrcc.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive, the Divisional Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
+Visit `https://rccnortheast.org.uk/admin/` and sign in with GitHub. Decap CMS provides a form-based editor for News, Events, Conclaves, the Divisional Executive, the Divisional Officers and the static Pages. Saving an entry creates a Pull Request (or commits directly, depending on workflow setting), which GitHub Actions then deploys.
 
 To enable GitHub sign-in for Decap, deploy a small OAuth bridge (see "OAuth setup" below) and update `src/admin-config.yml` with its URL.
 
 ## Images
 
-Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.svg`.
+Site images live in `public/img/`. The Header logo is rendered from `public/img/logo.png`.
 
 To pull (or refresh) images from the existing WordPress site, run:
 
@@ -88,7 +88,7 @@ npm run dev        # serves the admin at http://localhost:4321/admin/
 ### One-time GitHub Pages setup
 
 1. Repo **Settings → Pages → Build and deployment → Source**: choose **GitHub Actions**.
-2. If using the custom domain `northumberlandrcc.org.uk`, the `public/CNAME` file in this repo will set it automatically. Confirm DNS:
+2. If using the custom domain `rccnortheast.org.uk`, the `public/CNAME` file in this repo will set it automatically. Confirm DNS:
    - `A` records pointing apex to GitHub Pages IPs (185.199.108.153, .109.153, .110.153, .111.153), or
    - `CNAME` for `www` pointing to `<owner>.github.io`.
 3. Tick **Enforce HTTPS** once the certificate is issued.
@@ -102,7 +102,7 @@ Decap CMS uses a tiny OAuth proxy to broker GitHub sign-in for editors. The simp
 
 Then in **GitHub → Settings → Developer settings → OAuth Apps** create an app:
 
-- Homepage URL: `https://northumberlandrcc.org.uk`
+- Homepage URL: `https://rccnortheast.org.uk`
 - Authorization callback URL: `https://<your-proxy-host>/callback`
 
 Set the resulting client ID/secret as environment variables in your proxy, then update `src/admin-config.yml`:
@@ -148,4 +148,13 @@ backend:
 
 ## Licence
 
-Content © Northumberland Division of the Red Cross of Constantine. Source code MIT-licensed.
+Content © Division of the North East, Red Cross of Constantine. Source code MIT-licensed.
+
+## Domains
+
+- **Live site:** `https://rccnortheast.org.uk` (set in `public/CNAME`, `astro.config.mjs` and the repo's Pages settings).
+- **Old domain:** `northumberlandrcc.org.uk` is no longer served by this repo. A top-level redirect on its DNS (Cloudflare) sends visitors to `https://rccnortheast.org.uk`.
+
+## Meetings Diary
+
+The yearly diary lives in `src/content/diary/<year>.yaml` (editable under **Meetings Diary** in `/admin/`). Each entry has a `date`, optional `time`, `meeting`, `conclave` (the Conclave page slug), `where` and `type` (`meeting`, `enthronement`, `visit` or `annual`). The diary feeds `/diary/`, the "Next Conclave meetings" block on the homepage and each Conclave page. The site rebuilds daily so those lists stay current.
