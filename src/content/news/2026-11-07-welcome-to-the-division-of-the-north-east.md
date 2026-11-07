@@ -29,7 +29,7 @@ The new Division brings together nine Conclaves meeting across Northumberland, T
 - **Contacting the Divisional Recorder.** The Divisional Recorder, P. Kt. Paul McKay, can be reached at [recorder@rccnortheast.org.uk](mailto:recorder@rccnortheast.org.uk).
 - **Officers for 2026/2027.** The full list of [Divisional Officers and the Sepulchre Guard](/officers/) is now online, along with the [Divisional Executive](/executive/).
 - **Meetings Diary.** The [Meetings Diary for 2026–2027](/diary/) lists every Conclave meeting, with Enthronements and Divisional visits highlighted.
-- **Conclaves.** Each of the nine [Conclaves](/conclaves/) has its own page with meeting details, the Recorder's contact details and its Officers for the year.
+- **Conclaves.** Each of the nine [Conclaves](/conclaves/) has its own page with meeting details, forthcoming dates and the Recorder's contact details.
 
 ## Diary dates
 
