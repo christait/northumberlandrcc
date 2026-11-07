@@ -6,7 +6,7 @@ summary: Northumberland’s Intendant-General Trevor Fish, Deputy
   2026 Annual Divisional Meeting of the Division of North and East Lancashire at
   Preston Masonic Hall on Saturday, 16 May 2026, strengthening fraternal links
   between the two Divisions.
-image: /uploads/ig-dept-ig-recorder.png
+image: /uploads/ig-dept-ig-recorder.jpg
 draft: false
 ---
 Representatives from the Division of Northumberland attended the 2026 Annual Divisional Meeting of the Division of North and East Lancashire on Saturday, 16 May 2026.
