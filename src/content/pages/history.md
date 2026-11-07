@@ -4,11 +4,11 @@ eyebrow: Heritage
 description: A short history of the Masonic and Military Order of the Red Cross
   of Constantine and the Division of the North East.
 ---
-The full title of the Order — the *Masonic and Military Order of the Red Cross of Constantine and the Appendant Orders of the Holy Sepulchre and of Saint John the Evangelist* — points to its character as a Christian degree system within Freemasonry. It is open only to subscribing Royal Arch Masons who profess the Trinitarian Christian faith, and its ceremonies draw heavily on the ideals of early Christian chivalry and the devotional life of the medieval Church.
+The full title of the Order, the *Masonic and Military Order of the Red Cross of Constantine and the Appendant Orders of the Holy Sepulchre and of Saint John the Evangelist*, points to its character as a Christian degree system within Freemasonry. It is open only to subscribing Royal Arch Masons who profess the Trinitarian Christian faith, and its ceremonies draw heavily on the ideals of early Christian chivalry and the devotional life of the medieval Church.
 
 ## Constantine and the sign in the sky
 
-The Order takes its central imagery from a celebrated episode of late Roman history. On the eve of the Battle of the Milvian Bridge, fought on 28 October AD 312, the Emperor Constantine is said to have seen a cross of light above the sun, accompanied by the Greek words later rendered in Latin as **In Hoc Signo Vinces** — "in this sign, thou shalt conquer." Marching beneath the *labarum*, a standard bearing the Chi‑Rho monogram of Christ, Constantine defeated his rival Maxentius and, in time, set the Empire on the path to its Christian future. The cross, the monogram and the motto remain the principal emblems of the Order.
+The Order takes its central imagery from a celebrated episode of late Roman history. On the eve of the Battle of the Milvian Bridge, fought on 28 October AD 312, the Emperor Constantine is said to have seen a cross of light above the sun, accompanied by the Greek words later rendered in Latin as **In Hoc Signo Vinces**: "in this sign, thou shalt conquer." Marching beneath the *labarum*, a standard bearing the Chi‑Rho monogram of Christ, Constantine defeated his rival Maxentius and, in time, set the Empire on the path to its Christian future. The cross, the monogram and the motto remain the principal emblems of the Order.
 
 ## The eighteenth and early nineteenth centuries
 
@@ -34,6 +34,8 @@ The new Division has nine Conclaves, meeting in Jesmond, Shildon, Sunderland, As
 
 Detailed notes for each Conclave are on the [Conclaves](/conclaves/) page.
 
-> *"In this sign, thou shalt conquer."* — the words said to have appeared to Constantine before the Battle of the Milvian Bridge, AD 312.
+> *"In this sign, thou shalt conquer."*
+>
+> The words said to have appeared to Constantine before the Battle of the Milvian Bridge, AD 312.
 
 If you are researching the history of a particular Conclave, the Divisional Recorder will be glad to help with archival enquiries.

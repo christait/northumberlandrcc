@@ -58,7 +58,7 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     extension: md
     format: yaml-frontmatter
-    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    summary: "{{title}} | {{date | date('YYYY-MM-DD')}}"
     sortable_fields: [date, title]
     fields:
       - { name: title, label: Title, widget: string }
@@ -78,7 +78,7 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     extension: md
     format: yaml-frontmatter
-    summary: "{{title}} — {{date | date('YYYY-MM-DD HH:mm')}}"
+    summary: "{{title}} | {{date | date('YYYY-MM-DD HH:mm')}}"
     sortable_fields: [date, title]
     fields:
       - { name: title, label: Title, widget: string }
@@ -158,7 +158,7 @@ collections:
           - name: entries
             label: Meetings
             widget: list
-            summary: "{{fields.date}} — {{fields.meeting}}"
+            summary: "{{fields.date}} | {{fields.meeting}}"
             fields:
               - { name: date, label: Date, widget: datetime, time_format: false, date_format: 'YYYY-MM-DD', format: 'YYYY-MM-DD' }
               - { name: time, label: Time, widget: string, required: false, hint: 'e.g. 7.00 pm' }
