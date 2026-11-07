@@ -28,7 +28,7 @@ In England and Wales, the Order is constituted under the **Grand Imperial Concla
 
 ## The Division of the North East
 
-The Division of the North East was formed in 2026, bringing together the Conclaves of the former Divisions of Northumberland and Durham. Its first Intendant-General is Right Illustrious Knight Trevor Fish, who had led the Division of Northumberland since 2023, and its first Divisional Meeting was held on 7 November 2026.
+The Division of the North East was formed in 2026, bringing together the Conclaves of the former Divisions of Northumberland and Durham. Its first Intendant General is Right Illustrious Knight Trevor Fish, who had led the Division of Northumberland since 2023, and its first Divisional Meeting was held on 7 November 2026.
 
 The new Division has nine Conclaves, meeting in Jesmond, Shildon, Sunderland, Ashington, Hexham, Stanley, Chester-le-Street and Cramlington. The oldest, Royal Kent Conclave No. 152, was consecrated in 1893. The Division's crest bears the words *Fidelitas, Unitas et Fervor* (fidelity, unity and zeal), and its watchword for the years ahead is **Stronger Together**.
 

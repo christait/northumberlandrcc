@@ -2,7 +2,7 @@
 title: Welcome to the Division of the North East
 date: 2026-11-07T12:00:00.000Z
 summary: The Division of the North East holds its first Divisional Meeting today,
-  with Rt. Ill. Kt. Trevor Fish as its first Intendant-General. Nine Conclaves now
+  with Rt. Ill. Kt. Trevor Fish as its first Intendant General. Nine Conclaves now
   work together across the region under a new name, a new crest and a new website.
 author: The Divisional Recorder
 image: /uploads/trevor-fish-intendant-general.jpg
@@ -12,9 +12,9 @@ draft: false
 ---
 Today, Saturday 7 November 2026, the **Division of the North East** holds its first Divisional Meeting.
 
-The new Division brings together nine Conclaves meeting across Northumberland, Tyne and Wear and County Durham. It is led by **Right Illustrious Knight Trevor Fish**, its first Intendant-General.
+The new Division brings together nine Conclaves meeting across Northumberland, Tyne and Wear and County Durham. It is led by **Right Illustrious Knight Trevor Fish**, its first Intendant General.
 
-## A message from the Intendant-General
+## A message from the Intendant General
 
 > Worthy Knights,
 >
@@ -33,6 +33,6 @@ The new Division brings together nine Conclaves meeting across Northumberland, T
 
 ## Diary dates
 
-The first Conclave meeting of the new Divisional year is Aycliffe Conclave No. 190 at Shildon on Friday 20 November 2026. The Intendant-General and his Divisional Officers will make formal visits to Earl of Scarbrough (9 February), Bishop Acca (22 March), Astley (29 April) and Heabrym (14 May) in 2027.
+The first Conclave meeting of the new Divisional year is Aycliffe Conclave No. 190 at Shildon on Friday 20 November 2026. The Intendant General and his Divisional Officers will make formal visits to Earl of Scarbrough (9 February), Bishop Acca (22 March), Astley (29 April) and Heabrym (14 May) in 2027.
 
 The Divisional Annual Meeting 2027 will be held on **Saturday 6 November 2027** under the Banner of Royal Kent Conclave No. 152 at Freemasons' Hall, Gateshead.
