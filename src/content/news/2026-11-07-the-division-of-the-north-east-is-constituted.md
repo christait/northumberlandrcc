@@ -1,6 +1,6 @@
 ---
 title: The Division of the North East is constituted
-date: 2026-11-07T18:00:00.000Z
+date: 2026-11-08T18:00:00.000+00:00
 summary: On Saturday 7 November 2026 the Knights of Durham and Northumberland
   walked into the Temple at Gateshead Masonic Hall as two Divisions and walked
   out as one.
